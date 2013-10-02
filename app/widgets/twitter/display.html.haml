@@ -1,10 +1,4 @@
 = widget_div do
   = render({:state => :list}, @tweets)
- 
-  %p
-    What are you up to?
-   
-  = form_tag url_for_event(:submit), :remote => true do
-    = text_field_tag 'text'
-   
-    = submit_tag "Tweet!"
+
+  = render :state => :form

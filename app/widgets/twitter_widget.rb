@@ -16,4 +16,8 @@ class TwitterWidget < Apotomo::Widget
   def list(tweets)
     render :locals => {:tweets => tweets}
   end
+
+  def form
+    render
+  end
 end
