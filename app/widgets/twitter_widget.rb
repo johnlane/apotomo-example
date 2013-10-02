@@ -8,7 +8,7 @@ class TwitterWidget < Apotomo::Widget
   
   def process_tweet(evt)
     @tweet = Tweet.new
-    @tweet.update_attributes(evt[:tweet])
+    @tweet.update_attributes(evt[:tweet].permit(:text))
     
     replace :state => :display
   end
