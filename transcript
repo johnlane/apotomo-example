@@ -80,3 +80,44 @@ DRY the widget class
 
 End of Part Two.
 
+Part Three: Model Validation via AJAX
+http://apotomo.de/peters-guide-1.1/ajax-validation.html
+
+Create new/modify files for 'validation:
+
+1.   app/models/tweet.rb
+2.   app/widgets/twitter/form.haml
+3.   app/widgets/twitter_widget.rb
+
+At this point the application stops working.
+
+    NoMethodError in Dashboard#index
+    f.error_messages
+
+This was deprecated by Rails 3.0 and moved to a plugin. So I add the gem:
+
+    gem 'dynamic_form'
+  
+$ bundle update
+
+Now the app runs again but tweeting causes another error:
+
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  app/widgets/twitter_widget.rb:11:in `process_tweet'
+
+To fix this one we need to whitelist the "text" attribute. In file 'app/widgets/twitter_widget.rb', change line 11 from
+
+    @tweet.update_attributes(evt[:tweet])
+to
+    @tweet.update_attributes(evt[:tweet].permit(:text))
+
+
+At this point I decided to remove deprecation warnings.
+
+To fix "Calling #find(:all) is deprecated. Please call #all directly instead.", I changed 'app/widgets/twitter_widget.rb' line 5 from
+
+    @tweets = Tweet.find(:all)
+to
+    @tweets = Tweet.all
+
+end of Part Three.
