@@ -121,3 +121,30 @@ to
     @tweets = Tweet.all
 
 end of Part Three.
+
+Part Four: Namespacing widgets
+http://apotomo.de/peters-guide-1.1/namespacing.html
+
+$ rails g apotomo:widget Twitter::Form display -e haml
+
+I had to hope for the best with 'app/widgets/twitter/panel_widget.rb' as its content isn't displayed on the tutorial page. I ended up with the following changes:
+
+modified:   app/controllers/dashboard_controller.rb
+modified:   app/views/dashboard/index.html.haml
+renamed:    app/widgets/twitter/form.haml -> app/widgets/twitter/form/display.html.haml
+new file:   app/widgets/twitter/form_widget.rb
+renamed:    app/widgets/twitter/display.html.haml -> app/widgets/twitter/panel/display.html.haml
+renamed:    app/widgets/twitter/list.haml -> app/widgets/twitter/panel/list.haml
+new file:   app/widgets/twitter/panel_widget.rb
+deleted:    app/widgets/twitter_widget.rb
+new file:   test/widgets/twitter/form_widget_test.rb
+
+Note, in 'form_widget.rb' the change of line 12 from
+
+    if @tweet.update_attributes(evt[:tweet])
+to
+    if @tweet.update_attributes(evt[:tweet].permit(:text))
+
+end of PartFour.
+
+
