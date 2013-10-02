@@ -56,3 +56,27 @@ $ rails s
 Browse to http://localhost:3000/dashboard/index
 
 End of tutorial page 1
+
+Part Two: Using views and states
+http://apotomo.de/peters-guide-1.1/using-states.html
+
+Create new/modify files for 'list' view/state:
+
+1. app/widgets/twitter/list.haml
+2. app/widgets/twitter/display.html.haml
+3. app/widgets/twitter_widget.rb
+
+Create new/modify files for 'form' view/state:
+
+1. app/widgets/twitter/display.html.haml
+2. app/widgets/twitter/form.haml   [see note 1]
+3. app/widgets/twitter_widget.rb
+
+[1] Changed "- form_tag' to '= form_tag' on line 4.
+
+DRY the widget class
+
+1. app/widgets/twitter_widget.rb
+
+End of Part Two.
+
