@@ -42,6 +42,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    dynamic_form (1.1.4)
     erubis (2.7.0)
     execjs (2.0.2)
     haml (4.0.3)
@@ -121,6 +122,7 @@ PLATFORMS
 DEPENDENCIES
   apotomo (~> 1.2.4)
   coffee-rails (~> 4.0.0)
+  dynamic_form
   haml
   jbuilder (~> 1.2)
   jquery-rails
