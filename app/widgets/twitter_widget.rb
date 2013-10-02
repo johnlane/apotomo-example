@@ -2,7 +2,7 @@ class TwitterWidget < Apotomo::Widget
   responds_to_event :submit, :with => :process_tweet
 
   def display
-    @tweets = Tweet.find(:all)
+    @tweets = Tweet.all
     render
   end
   
