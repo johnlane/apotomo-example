@@ -1,0 +1,58 @@
+$ rails new apotomo-tweet
+$ echo 'apotomo-tweet' > apotomo-tweet/.ruby-gemset
+$ echo 'ruby-2.0.0-p247' > apotomo-tweet/.ruby-version
+$ cd apotomo-tweet
+
+$ git init
+$ git add .
+$ git commit -m "new rails4 app for apotomo tutorial"
+
+Edit Gemfile to add:
+
+    gem 'apotomo', '~>1.2.4'
+    gem 'haml'
+
+$ bundle install
+$ git commit -a -m "Gemfile and bundle"
+
+$ rails generate jquery:install
+$ rails generate model tweet text:string
+$ rake db:migrate
+$ rails generate controller dashboard index
+$ rails generate apotomo:widget twitter display -e haml
+
+
+Now edit files as per tutorial "http://apotomo.de/peters-guide-1.1/introduction.html"
+
+1. app/views/layouts/application.html.haml [ see point 1]
+2. app/widgets/twitter_widget.rb
+3. app/controllers/dashboard_controller.rb
+4. app/views/dashboard/index.html.haml
+5. app/widgets/twitter/display.html.haml   [see point 2]
+
+[1] I changed this file's content to the below:
+
+%html
+%head
+  = javascript_include_tag "application", "data-turbolinks-track" => true
+  = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+  = csrf_meta_tags
+
+%body
+  = yield
+
+(an alternative is to not create this file and keep "app/views/layouts/application.html.erb" insead - deleted below)
+
+[1] I changed '-' to '=' on lines 1 and 10
+
+Delete some files:
+$ rm app/views/layouts/application.html.erb
+$ rm app/views/dashboard/index.html.erb
+
+Run the application
+
+$ rails s
+
+Browse to http://localhost:3000/dashboard/index
+
+End of tutorial page 1
