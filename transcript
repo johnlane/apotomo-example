@@ -147,4 +147,26 @@ to
 
 end of PartFour.
 
+ Part Five: Nesting widgets, pt. 1
+http://apotomo.de/peters-guide-1.1/simple-nesting.html
+
+First, "public nesting". Modified files as per tutorial:
+
+1. app/controllers/dashboard_controller.rb
+2. app/views/dashboard/index.html.haml
+3. app/widgets/twitter/panel/display.html.haml
+
+I noted that the application did not work with just the "public nesting" in place. I got the below error:
+
+NoMethodError in Dashboard#index
+Showing .../app/views/dashboard/index.html.haml where line #5 raised:
+undefined method `<<' for #<Apotomo::WidgetShortcuts::FactoryProxy:0x007ff0904de9e0>
+= render_widget :twitter
+
+After implementing the "private nesting", it works again. Modified files as per tutorial:
+
+1. app/controllers/dashboard_controller.rb
+2. app/widgets/twitter/panel_widget.rb
+
+end of Part Five.
 
