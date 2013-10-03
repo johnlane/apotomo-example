@@ -181,3 +181,13 @@ Modified 2 files as per tutorial.
 Note use of "Tweet.all" instead of deprecated "Tweet.find(:all)" in panel_widget.rb.
 
 end of Part Six.
+
+Part Seven: Passing Messages with Events
+http://apotomo.de/peters-guide-1.1/message-passing.html
+
+Modified 2 files as per tutorial
+
+1. app/widgets/twitter/form_widget.rb
+2. app/widgets/twitter/panel_widget.rb
+
+end of Part Seven.

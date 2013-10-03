@@ -16,7 +16,9 @@ class Twitter::PanelWidget < Apotomo::Widget
   end
 
   def redraw_list(evt)
-    replace "##{widget_id} ul", {:state => :list}, Tweet.all
+    text = evt[:tweet].text
+
+    render :text => "$(\"##{widget_id} ul\").append(\"<li>#{text}</li>\");"
   end
 
 end
